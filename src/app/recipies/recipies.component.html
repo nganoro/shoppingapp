@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-5">
+    <app-recipie-list>
+<!--      (chosenRecipe)="selectedRecipe = $event"-->
+    </app-recipie-list>
+  </div>
+  <div class="col-md-7">
+<!--    <app-recipie-detail-->
+<!--      *ngIf="selectedRecipe; else infoText"-->
+<!--      [chosenRecipe]="selectedRecipe"></app-recipie-detail>-->
+<!--    <ng-template #infoText>-->
+<!--      <section appBetterHighlight highlightColor="blue">Please Select a Recipe!</section>-->
+<!--    </ng-template>-->
+    <router-outlet></router-outlet>
+  </div>
+</div>

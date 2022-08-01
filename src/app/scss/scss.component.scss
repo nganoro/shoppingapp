@@ -1,0 +1,55 @@
+$primary-color: green;
+$bg-color:#2c3e50;
+$hover-color: #16a085;
+$text-color: #ffffff;
+
+.panel{
+  border: 3px solid dodgerblue;
+  background: #eea571;
+  margin: 10px;
+}
+
+.little-panel{
+  @extend .panel;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.big-panel{
+  @extend .panel;
+  font-size: 32px;
+  padding: 20px;
+}
+
+h1{
+  color: $primary-color;
+}
+
+P{
+  color: $primary-color;
+}
+
+nav {
+
+  ul {
+    background-color: $bg-color;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    color: $text-color;
+    display: inline-block;
+    padding: 10px 16px;
+    text-decoration: none;
+  }
+
+  a:hover {
+    background-color: $hover-color;
+  }
+}
