@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
-import {recipe} from "./recipe.model";
+import {Recipe} from "./recipe.model";
 import {EventEmitter} from "@angular/core";
 import {Ingredient} from "../shared/ingredient.model";
 import {Subject} from "rxjs";
+import {ShoppingListService} from "../shopping-list/shopping-list.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
-  recipeSelected = new Subject<recipe>();
+  recipesChanged = new Subject<Recipe[]>();
+  recipeSelected = new Subject<Recipe>();
 
-  constructor() { }
+  constructor(private shoppingListService : ShoppingListService) { }
 
-  private recipes: recipe[] = [
-    new recipe('A Test Recipe',
-      'This is simply a test',
+  private recipes: Recipe[] = [
+    new Recipe('A Test Recipe',
+      'This is simply a test for first recipe',
       'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
       [
         new Ingredient('Burger', 2),
         new Ingredient('Fries', 5)
       ]),
-    new recipe('Another Test Recipe',
-      'This is simply a test',
+    new Recipe('Another Test Recipe',
+      'This is simply a test for second recipe',
       'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
       [
         new Ingredient('Salsa', 3),
@@ -37,9 +39,17 @@ export class RecipeService {
     return this.recipes[index];
   }
 
-  addToShoppingList(ing : Ingredient[]){
-    const ingName = ing[0].name;
-    const ingAmount = ing[0].amount;
-    const newIngredient = new Ingredient(ingName, ingAmount);
+  addRecipe(newRecipe: Recipe){
+    this.recipes.push(newRecipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe){
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  addIngredientToShoppingList(ing : Ingredient[]){
+    this.shoppingListService.addRecipeDetailIngredients(ing);
   }
 }

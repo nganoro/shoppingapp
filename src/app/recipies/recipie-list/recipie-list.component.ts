@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {recipe} from "../recipe.model";
+import {Recipe} from "../recipe.model";
 import {RecipeService} from "../recipe.service";
+import {Ingredient} from "../../shared/ingredient.model";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-recipie-list',
@@ -9,12 +11,23 @@ import {RecipeService} from "../recipe.service";
 })
 export class RecipieListComponent implements OnInit {
   // @Output() chosenRecipe = new EventEmitter<recipe>();
-  recipes: recipe[];
+  recipes: Recipe[];
+  subscription: Subscription;
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
     this.recipes = this.recipeService.getRecipe();
+    this.subscription = this.recipeService.recipesChanged
+    .subscribe(
+      (recipes: Recipe[]) => {
+        this.recipes = recipes;
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

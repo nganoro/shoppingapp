@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {recipe} from "../recipe.model";
+import {Recipe} from "../recipe.model";
 import {ShoppingListService} from "../../shopping-list/shopping-list.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {RecipeService} from "../recipe.service";
@@ -11,7 +11,7 @@ import {RecipeService} from "../recipe.service";
 })
 export class RecipieDetailComponent implements OnInit {
   // @Input() chosenRecipe : recipe;
-  chosenRecipe : recipe;
+  chosenRecipe : Recipe;
   id: number;
 
   constructor(
@@ -28,12 +28,11 @@ export class RecipieDetailComponent implements OnInit {
               this.chosenRecipe = this.recipeService.getRecipeWithID(this.id);
         }
       );
-    console.log(this.id);
   }
 
   addToShoppingList(){
     // @ts-ignore
-    this.shoppingListService.addRecipeDetailIngredients(this.chosenRecipe.ingredient);
+    this.recipeService.addIngredientToShoppingList(this.chosenRecipe.ingredients);
     // this.router.navigate(['ShoppingList']);
   }
 

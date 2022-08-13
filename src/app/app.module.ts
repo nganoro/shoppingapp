@@ -9,7 +9,7 @@ import { RecipieDetailComponent } from './recipies/recipie-detail/recipie-detail
 import { RecipeItemComponent } from './recipies/recipie-list/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-import { FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BetterHighlightDirective } from './recipies/better-highlight.directive';
 import { ShoppingListService} from "./shopping-list/shopping-list.service";
 import { RecipeService} from "./recipies/recipe.service";
@@ -37,7 +37,8 @@ import {NgModule} from "@angular/core";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]

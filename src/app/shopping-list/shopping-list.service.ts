@@ -29,10 +29,13 @@ export class ShoppingListService {
   }
 
   addRecipeDetailIngredients(ingredients: Ingredient[]){
-    for(let ing of ingredients){
-      console.log(ing.amount);
-      this.addIngredients(ing);
-    }
+    // for(let ing of ingredients){
+    //   console.log(ing.amount);
+    //   this.addIngredients(ing);
+    // }
+    this.ingredients.push(...ingredients);
+    console.log(this.ingredients);
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   updateIngredient(index: number, newIngredient: Ingredient){
