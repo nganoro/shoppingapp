@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
 import {Recipe} from "../recipe.model";
 import {RecipeService} from "../recipe.service";
 import {Ingredient} from "../../shared/ingredient.model";
@@ -9,7 +9,7 @@ import {Observable, Subscription} from "rxjs";
   templateUrl: './recipie-list.component.html',
   styleUrls: ['./recipie-list.component.scss']
 })
-export class RecipieListComponent implements OnInit {
+export class RecipieListComponent implements OnInit, OnDestroy {
   // @Output() chosenRecipe = new EventEmitter<recipe>();
   recipes: Recipe[];
   subscription: Subscription;

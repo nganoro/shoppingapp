@@ -44,12 +44,17 @@ export class RecipeService {
     this.recipesChanged.next(this.recipes.slice());
   }
 
+  addIngredientToShoppingList(ing : Ingredient[]){
+    this.shoppingListService.addRecipeDetailIngredients(ing);
+  }
+
   updateRecipe(index: number, newRecipe: Recipe){
     this.recipes[index] = newRecipe;
     this.recipesChanged.next(this.recipes.slice());
   }
 
-  addIngredientToShoppingList(ing : Ingredient[]){
-    this.shoppingListService.addRecipeDetailIngredients(ing);
+  deleteRecipe(index: number){
+    this.recipes.splice(index, 1);
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
