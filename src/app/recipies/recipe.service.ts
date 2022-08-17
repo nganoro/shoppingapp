@@ -14,25 +14,32 @@ export class RecipeService {
 
   constructor(private shoppingListService : ShoppingListService) { }
 
-  private recipes: Recipe[] = [
-    new Recipe('A Test Recipe',
-      'This is simply a test for first recipe',
-      'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-      [
-        new Ingredient('Burger', 2),
-        new Ingredient('Fries', 5)
-      ]),
-    new Recipe('Another Test Recipe',
-      'This is simply a test for second recipe',
-      'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-      [
-        new Ingredient('Salsa', 3),
-        new Ingredient('Mashed Potatos', 5)
-      ])
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe('A Test Recipe',
+  //     'This is simply a test for first recipe',
+  //     'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+  //     [
+  //       new Ingredient('Burger', 2),
+  //       new Ingredient('Fries', 5)
+  //     ]),
+  //   new Recipe('Another Test Recipe',
+  //     'This is simply a test for second recipe',
+  //     'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+  //     [
+  //       new Ingredient('Salsa', 3),
+  //       new Ingredient('Mashed Potatos', 5)
+  //     ])
+  // ];
+
+  private recipes: Recipe[] = [];
 
   getRecipe(){
     return this.recipes.slice();
+  }
+
+  setRecipes(r: Recipe[]){
+    this.recipes = r;
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   getRecipeWithID(index: number){

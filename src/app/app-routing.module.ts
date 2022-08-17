@@ -9,15 +9,23 @@ import {ShoppingListComponent} from "./shopping-list/shopping-list.component";
 import {RecipieStartComponent} from "./recipies/recipie-start/recipie-start.component";
 import {RecipieEditComponent} from "./recipies/recipie-edit/recipie-edit.component";
 import {FormPracticeComponent} from "./form-practice/form-practice.component";
+import {RecipesResolverService} from "./recipies/recipes-resolver.service";
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},
-  { path: 'recipes', component: RecipiesComponent, children: [
+  { path: 'recipes', component: RecipiesComponent,
+    children: [
       { path: '', component: RecipieStartComponent},
       { path: 'new', component: RecipieEditComponent},
-      { path: ':id', component: RecipieDetailComponent},
-      { path: ':id/edit', component: RecipieEditComponent}
-    ] },
+      { path: ':id',
+        component: RecipieDetailComponent,
+        resolve: [RecipesResolverService]
+      },
+      { path: ':id/edit',
+        component: RecipieEditComponent,
+        resolve: [RecipesResolverService]
+     }]
+  },
   { path: 'RecipeList', component: RecipieListComponent},
   { path: 'RecipeDetail', component: RecipieDetailComponent},
   { path: 'ShoppingList', component: ShoppingListComponent},

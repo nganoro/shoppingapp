@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { NgModule } from "@angular/core";
+import { HttpClientModule} from "@angular/common/http";
+
 import { AppComponent } from './app.component';
 import { ScssComponent } from './scss/scss.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,7 +19,7 @@ import { RecipeService} from "./recipies/recipe.service";
 import { RecipieStartComponent } from './recipies/recipie-start/recipie-start.component';
 import { RecipieEditComponent } from './recipies/recipie-edit/recipie-edit.component';
 import { FormPracticeComponent } from './form-practice/form-practice.component';
-import {NgModule} from "@angular/core";
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import {NgModule} from "@angular/core";
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
