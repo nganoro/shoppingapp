@@ -19,6 +19,8 @@ import { RecipeService} from "./recipies/recipe.service";
 import { RecipieStartComponent } from './recipies/recipie-start/recipie-start.component';
 import { RecipieEditComponent } from './recipies/recipie-edit/recipie-edit.component';
 import { FormPracticeComponent } from './form-practice/form-practice.component';
+import { AuthorizationComponent } from './authorization/authorization.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { FormPracticeComponent } from './form-practice/form-practice.component';
     RecipieStartComponent,
     RecipieEditComponent,
     FormPracticeComponent,
+    AuthorizationComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import {RecipieStartComponent} from "./recipies/recipie-start/recipie-start.comp
 import {RecipieEditComponent} from "./recipies/recipie-edit/recipie-edit.component";
 import {FormPracticeComponent} from "./form-practice/form-practice.component";
 import {RecipesResolverService} from "./recipies/recipes-resolver.service";
+import {AuthorizationComponent} from "./authorization/authorization.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'RecipeDetail', component: RecipieDetailComponent},
   { path: 'ShoppingList', component: ShoppingListComponent},
   { path: 'FormPractice', component: FormPracticeComponent},
+  { path: 'Authorization', component: AuthorizationComponent},
 
 ];
 
