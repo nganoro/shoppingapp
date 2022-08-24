@@ -11,10 +11,13 @@ import {RecipieEditComponent} from "./recipies/recipie-edit/recipie-edit.compone
 import {FormPracticeComponent} from "./form-practice/form-practice.component";
 import {RecipesResolverService} from "./recipies/recipes-resolver.service";
 import {AuthorizationComponent} from "./authorization/authorization.component";
+import {AuthGuard} from "./authorization/auth-guard";
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},
-  { path: 'recipes', component: RecipiesComponent,
+  { path: 'recipes',
+    component: RecipiesComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: RecipieStartComponent},
       { path: 'new', component: RecipieEditComponent},

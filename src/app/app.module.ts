@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from "@angular/core";
-import { HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { ScssComponent } from './scss/scss.component';
@@ -21,6 +21,7 @@ import { RecipieEditComponent } from './recipies/recipie-edit/recipie-edit.compo
 import { FormPracticeComponent } from './form-practice/form-practice.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import {AuthInterceptorService} from "./authorization/auth-interceptor.service";
 
 
 @NgModule({
@@ -48,7 +49,15 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     FormsModule,
     HttpClientModule
   ],
-  providers: [ShoppingListService, RecipeService],
+  providers: [
+    ShoppingListService,
+    RecipeService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

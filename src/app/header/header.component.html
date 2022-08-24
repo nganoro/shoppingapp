@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active" class="nav-item">
+        <li routerLinkActive="active" class="nav-item" *ngIf="isAuthenticated">
           <a
             class="nav-link"
             routerLink="/recipes">
@@ -14,7 +14,7 @@
 <!--            (click)="onSelect('recipe')"-->
           Recipies</a>
         </li>
-        <li routerLinkActive="active" class="nav-item">
+        <li routerLinkActive="active" class="nav-item" *ngIf="!isAuthenticated">
           <a
             class="nav-link"
             routerLink="/Authorization">
@@ -31,22 +31,27 @@
           Shopping List</a>
         </li>
       </ul>
-    </div>
-    <div>
-      <ul class="nav navbar-nav navbar-right">
-        <div class="btn-group dropleft">
-          <div class="dropdown-toggle" href="#"
+      <ul class="nav navbar-nav navbar-right" style="margin-left: 550px;">
+        <li *ngIf="isAuthenticated">
+          <a style="margin-right: 10px; cursor: pointer;" (click)="onLogout()">Logout</a>
+        </li>
+        <li class="dropdown" *ngIf="isAuthenticated">
+          <a class="dropdown-toggle" href="#"
                 id="navbarDropdownMenuLink"
                 role="button"
                 data-toggle="dropdown"
                 aria-expanded="false">Manage
             <span class="caret"></span>
-          </div>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" style="cursor:pointer;" (click)="onSaveData()">Save Data</a>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li>
+              <a class="dropdown-item" style="cursor:pointer;" (click)="onSaveData()">Save Data</a>
+            </li>
+            <li>
             <a class="dropdown-item" style="cursor:pointer;" (click)="onFetchData()">Fetch Data</a>
-          </div>
-        </div>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
